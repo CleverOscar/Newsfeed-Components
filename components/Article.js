@@ -89,22 +89,6 @@ const data = [
   }
 ];
 
-/* 
-  Step 1: Write a component called 'articleMaker' to create an article.
-  Your component is a function that takes an article object as its only argument,
-  and returns a DOM node looking like the one below:
-
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
-
-    {three separate paragraph elements}
-
-    <span class="expandButton">+</span>
-  </div>
-
-*/
-
 // Articles container
 const articlesContainer = document.querySelector('.articles');
 // console.log(articlesContainer);
@@ -123,36 +107,37 @@ function createArticle(objData) {
   expandButton.classList.add('exapndButton');
   expandButton.textContent = '+';
 
+  let paragraphOne = document.createElement('p')
+  let paragraphTwo = document.createElement('p')
+  let paragraphThree = document.createElement('p')
+
   articleTitle.textContent = objData["title"]
   articleDate.textContent = objData['date']
+  paragraphOne.textContent = objData['firstParagraph']
+  paragraphTwo.textContent = objData['secondParagraph']
+  paragraphThree.textContent = objData['thirdParagraph']
 
   article.appendChild(articleTitle);
   article.appendChild(articleDate);
   article.appendChild(expandButton);
+  expandButton.appendChild(paragraphOne);
+  expandButton.appendChild(paragraphTwo);
+  expandButton.appendChild(paragraphThree);
 
-  // objData.forEach((articleItem)=> {
-  //   // console.log(articleItem)
-  //   articleTitle.textContent = articleItem["title"]
+  // Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
+  // This listener should toggle the class 'article-open' on div.article.
 
-  //   articleDate.textContent = articleItem["date"]
-
-  //   article.appendChild(articleTitle);
-  //   article.appendChild(articleDate);
-  //   article.appendChild(expandButton);
-
-  //   // debugger
-  // })
-  
-   return article
+  expandButton.addEventListener('click',(event) => {
+    article.classList.toggle('article-open')
+  })
+  return article
 }
 
 data.forEach(article => {
   articlesContainer.appendChild(createArticle(article))
 });
 
-console.log(articlesContainer.appendChild(createArticle(data)))
 // articlesContainer.appendChild(createArticle(data));
-
 
 
 
@@ -175,9 +160,6 @@ console.log(articlesContainer.appendChild(createArticle(data)))
 
 /*
 
-  Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
-  This listener should toggle the class 'article-open' on div.article.
-
   Step 3: Don't forget to return something from your function!
 
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
@@ -186,112 +168,3 @@ console.log(articlesContainer.appendChild(createArticle(data)))
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
-
-
-
-
-// const fakeData = [
-//   "Button One",
-//   "Button Two",
-//   "Button Three",
-//   "Button Four",
-//   "Button Five"
-// ]
-
-// function createButton(text) {
-//   const button = document.createElement('button');
-
-//   button.classList.add('btn');
-
-//   button.textContent = text;
-
-//   return button;
-// }
-
-
-// for (let i = 0; i < fakeData.length; i++){
-//   let button = createButton(fakeData[i]);
-//   articles.appendChild(button);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// for(let i = 0; i < data.length; i++){
-//   console.log(data[i])
-// }
-
-// const articles = document.querySelector('.articles');
-
-// function articleMaker(objData){
-  
-//   // container element & class
-//   const articleContainer = document.createElement('div');
-//   articleContainer.classList.add('article');
-  
-//   // title element
-//   let header = document.createElement('h2');
-  
-//   // date published & class
-//   let dateInfo = document.createElement('p');
-//   dateInfo.classList.add('date');
-
-//   // expandButton element and class
-//   let expandBtn = document.createElement('span');
-//   expandBtn.classList.add('expandButton');
-
-//   console.log(objData);
-//   // objData.forEach(function(article) {
-//   //   // console.log(article);
-//   //   header.textContent = article["title"];
-//   //   dateInfo.textContent = article["date"];
-//   //   expandBtn.textContent = article["firstParagraph"]
-
-    
-//   //   // append elements to cotainer to create article component
-//   //   articleContainer.appendChild(header);
-//   //   articleContainer.appendChild(dateInfo);
-//   //   articleContainer.appendChild(expandBtn);
-    
-//   // } )
-//   // console.log(articleContainer);
-
-//   // for(let i = 0; i < objData.length; i++){
-//   //   header.textContent = objData[i]["title"];
-//   //   dateInfo.textContent = objData[i]["date"];
-//   //   expandBtn.textContent = objData[i]["firstParagraph"]
-
-    
-//   //   // append elements to cotainer to create article component
-//   //   articleContainer.appendChild(header);
-//   //   articleContainer.appendChild(dateInfo);
-//   //   articleContainer.appendChild(expandBtn);
-
-//   // }
-  
-//   return articleContainer;
- 
-// }
-
-// // console.log(articleMaker(data));
-
-
-// console.log(articles.appendChild(articleMaker(data)))
-
