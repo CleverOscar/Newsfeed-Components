@@ -89,7 +89,7 @@ const data = [
   }
 ];
 
-/*
+/* 
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
@@ -103,6 +103,78 @@ const data = [
     <span class="expandButton">+</span>
   </div>
 
+*/
+
+// Articles container
+const articlesContainer = document.querySelector('.articles');
+// console.log(articlesContainer);
+
+function createArticle(objData) {
+  // Article Wrapper
+  let article = document.createElement('div');
+  article.classList.add('article');
+  // Article Elements
+  let articleTitle = document.createElement('h2');
+
+  let articleDate = document.createElement('p');
+  articleDate.classList.add('date');
+
+  let expandButton = document.createElement('span');
+  expandButton.classList.add('exapndButton');
+  expandButton.textContent = '+';
+
+  articleTitle.textContent = objData["title"]
+  articleDate.textContent = objData['date']
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(expandButton);
+
+  // objData.forEach((articleItem)=> {
+  //   // console.log(articleItem)
+  //   articleTitle.textContent = articleItem["title"]
+
+  //   articleDate.textContent = articleItem["date"]
+
+  //   article.appendChild(articleTitle);
+  //   article.appendChild(articleDate);
+  //   article.appendChild(expandButton);
+
+  //   // debugger
+  // })
+  
+   return article
+}
+
+data.forEach(article => {
+  articlesContainer.appendChild(createArticle(article))
+});
+
+console.log(articlesContainer.appendChild(createArticle(data)))
+// articlesContainer.appendChild(createArticle(data));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
@@ -114,3 +186,112 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+
+
+
+// const fakeData = [
+//   "Button One",
+//   "Button Two",
+//   "Button Three",
+//   "Button Four",
+//   "Button Five"
+// ]
+
+// function createButton(text) {
+//   const button = document.createElement('button');
+
+//   button.classList.add('btn');
+
+//   button.textContent = text;
+
+//   return button;
+// }
+
+
+// for (let i = 0; i < fakeData.length; i++){
+//   let button = createButton(fakeData[i]);
+//   articles.appendChild(button);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// for(let i = 0; i < data.length; i++){
+//   console.log(data[i])
+// }
+
+// const articles = document.querySelector('.articles');
+
+// function articleMaker(objData){
+  
+//   // container element & class
+//   const articleContainer = document.createElement('div');
+//   articleContainer.classList.add('article');
+  
+//   // title element
+//   let header = document.createElement('h2');
+  
+//   // date published & class
+//   let dateInfo = document.createElement('p');
+//   dateInfo.classList.add('date');
+
+//   // expandButton element and class
+//   let expandBtn = document.createElement('span');
+//   expandBtn.classList.add('expandButton');
+
+//   console.log(objData);
+//   // objData.forEach(function(article) {
+//   //   // console.log(article);
+//   //   header.textContent = article["title"];
+//   //   dateInfo.textContent = article["date"];
+//   //   expandBtn.textContent = article["firstParagraph"]
+
+    
+//   //   // append elements to cotainer to create article component
+//   //   articleContainer.appendChild(header);
+//   //   articleContainer.appendChild(dateInfo);
+//   //   articleContainer.appendChild(expandBtn);
+    
+//   // } )
+//   // console.log(articleContainer);
+
+//   // for(let i = 0; i < objData.length; i++){
+//   //   header.textContent = objData[i]["title"];
+//   //   dateInfo.textContent = objData[i]["date"];
+//   //   expandBtn.textContent = objData[i]["firstParagraph"]
+
+    
+//   //   // append elements to cotainer to create article component
+//   //   articleContainer.appendChild(header);
+//   //   articleContainer.appendChild(dateInfo);
+//   //   articleContainer.appendChild(expandBtn);
+
+//   // }
+  
+//   return articleContainer;
+ 
+// }
+
+// // console.log(articleMaker(data));
+
+
+// console.log(articles.appendChild(articleMaker(data)))
+
