@@ -107,7 +107,7 @@ const data = [
 
 // Articles container
 const articlesContainer = document.querySelector('.articles');
-console.log(articlesContainer);
+// console.log(articlesContainer);
 
 function createArticle(objData) {
   // Article Wrapper
@@ -116,27 +116,42 @@ function createArticle(objData) {
   // Article Elements
   let articleTitle = document.createElement('h2');
 
-  article.textContent = objData;
-
   let articleDate = document.createElement('p');
   articleDate.classList.add('date');
 
   let expandButton = document.createElement('span');
   expandButton.classList.add('exapndButton');
+  expandButton.textContent = '+';
 
-  // Article Elements Added To Wrapper
+  articleTitle.textContent = objData["title"]
+  articleDate.textContent = objData['date']
 
   article.appendChild(articleTitle);
   article.appendChild(articleDate);
-  article.append(expandButton);
+  article.appendChild(expandButton);
 
-  return article;
+  // objData.forEach((articleItem)=> {
+  //   // console.log(articleItem)
+  //   articleTitle.textContent = articleItem["title"]
+
+  //   articleDate.textContent = articleItem["date"]
+
+  //   article.appendChild(articleTitle);
+  //   article.appendChild(articleDate);
+  //   article.appendChild(expandButton);
+
+  //   // debugger
+  // })
+  
+   return article
 }
 
-console.log(createArticle('Dummy demo'));
+data.forEach(article => {
+  articlesContainer.appendChild(createArticle(article))
+});
 
-articlesContainer.appendChild(createArticle('Dummy Demo 1'));
-articlesContainer.appendChild(createArticle('Dummy Demo 2'));
+console.log(articlesContainer.appendChild(createArticle(data)))
+// articlesContainer.appendChild(createArticle(data));
 
 
 
