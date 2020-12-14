@@ -89,7 +89,7 @@ const data = [
   }
 ];
 
-/*
+/* 
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
@@ -103,6 +103,60 @@ const data = [
     <span class="expandButton">+</span>
   </div>
 
+*/ 
+// for(let i = 0; i < data.length; i++){
+//   console.log(data[i])
+// }
+
+const articles = document.querySelector('.articles');
+
+function articleMaker(objData){
+  
+  // container element & class
+  const articleContainer = document.createElement('div');
+  articleContainer.classList.add('article');
+  
+  // title element
+  let header = document.createElement('h2');
+  
+  // date published & class
+  let dateInfo = document.createElement('p');
+  dateInfo.classList.add('date');
+
+  // expandButton element and class
+  let expandBtn = document.createElement('span');
+  expandBtn.classList.add('expandButton');
+
+
+
+  objData.forEach(function(article) {
+    console.log(article);
+    header.textContent = article["title"];
+    dateInfo.textContent = article["date"];
+    expandBtn.textContent = article["firstParagraph"]
+
+    
+    // append elements to cotainer to create article component
+    articleContainer.appendChild(header);
+    articleContainer.appendChild(dateInfo);
+    articleContainer.appendChild(expandBtn);
+
+  } )
+  console.log(articleContainer);
+  
+  return articleContainer;
+ 
+}
+
+articles.appendChild(articleMaker(data));
+
+
+// console.log(articles.appendChild(articleMaker(data)));
+
+
+
+/*
+
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
@@ -114,3 +168,35 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+
+
+
+// const fakeData = [
+//   "Button One",
+//   "Button Two",
+//   "Button Three",
+//   "Button Four",
+//   "Button Five"
+// ]
+
+// function createButton(text) {
+//   const button = document.createElement('button');
+
+//   button.classList.add('btn');
+
+//   button.textContent = text;
+
+//   return button;
+// }
+
+
+// for (let i = 0; i < fakeData.length; i++){
+//   let button = createButton(fakeData[i]);
+//   articles.appendChild(button);
+// }
+
+
+
+
+
